@@ -1,0 +1,407 @@
+<!-- 
+  Author: Avery Arnold
+  Date: November 5, 2026
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina 76 | Menu & Special Offers</title>
+    <style>
+        :root {
+            --primary: #c8421c;
+            --primary-dark: #a23112;
+            --secondary: #d97736;
+            --accent: #2c5e43;
+            --accent-light: #438a63;
+            --bg-light: #faf7f2;
+            --surface: #ffffff;
+            --text-dark: #222222;
+            --text-muted: #5f5f5f;
+            --border: #e6dfd5;
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header.site-nav {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Banner Hero */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(200, 66, 28, 0.94), rgba(44, 94, 67, 0.9)), 
+                        url('https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .page-banner h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-banner p {
+            font-size: 1.2rem;
+            color: #f3f3f3;
+        }
+
+        /* Main Container */
+        main {
+            display: block;
+            width: 100%;
+        }
+
+        /* Special Promo */
+        .promo-banner {
+            background-color: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin: 2.5rem auto 1rem;
+            max-width: 1000px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(200, 66, 28, 0.2);
+        }
+
+        .promo-banner h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-banner p {
+            color: #fbeee9;
+            font-size: 1.05rem;
+        }
+
+        .promo-code {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            font-weight: 800;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Menu Section */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-dark);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: bold;
+            width: fit-content;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works (Process) */
+        .process-section {
+            background-color: #f2eee8;
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            background: var(--surface);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            background-color: var(--accent);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+
+        .step h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Unified Header Navigation -->
+    <header class="site-nav">
+        <nav>
+            <a href="index.html" class="brand-logo">Cantina 76</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html">Menu</a></li>
+                <li><a href="page3.html">About & Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Page Title Banner -->
+        <section class="page-banner">
+            <h1>Our Products & Services</h1>
+            <p>Fresh, authentic Mexican flavors crafted daily by Cantina 76.</p>
+        </section>
+
+        <!-- Special Promo / Featured Item -->
+        <section class="promo-banner">
+            <h2>Bestseller Promo Spotlight</h2>
+            <p>Get 20% off our Signature Taco Fiesta Box this week only!</p>
+            <div class="promo-code">Use Code: FIESTA76</div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section class="container">
+            <h2 class="section-title">The Offer</h2>
+            <div class="menu-grid">
+
+                <!-- Item 1 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80" alt="Street Tacos Trio">
+                    <div class="card-content">
+                        <span class="badge">Bestseller</span>
+                        <div class="card-header">
+                            <h3 class="card-title">Street Tacos Trio</h3>
+                            <span class="price">$12.99</span>
+                        </div>
+                        <p class="card-description">Three soft corn tortillas filled with your choice of grilled carne asada, marinated al pastor, or seasoned chicken, topped with fresh cilantro and diced onions.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80" alt="Ultimate Burrito Bowl">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Ultimate Burrito Bowl</h3>
+                            <span class="price">$14.50</span>
+                        </div>
+                        <p class="card-description">Cilantro-lime rice, black beans, roasted corn, guacamole, pico de gallo, and warm chipotle crema with your favorite protein choice.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1534352956036-cd81e27dd615?auto=format&fit=crop&w=600&q=80" alt="Loaded Nachos Supreme">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Loaded Nachos Supreme</h3>
+                            <span class="price">$11.00</span>
+                        </div>
+                        <p class="card-description">Crispy house-made tortilla chips smothered in melted queso, refried beans, jalapenos, sour cream, and fresh house salsa.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 (Bundle Deal) -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Taco Fiesta Box">
+                    <div class="card-content">
+                        <span class="badge">Family Bundle</span>
+                        <div class="card-header">
+                            <h3 class="card-title">Taco Fiesta Box</h3>
+                            <span class="price">$39.99</span>
+                        </div>
+                        <p class="card-description">Feeds 4-5 people. Includes 12 assorted tacos, large chips & guacamole, churros for dessert, and 4 Mexican Sodas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How It Works (Process) -->
+        <section class="process-section">
+            <h2 class="section-title">How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Order Online</h3>
+                    <p>Browse our menu and customize your favorite authentic dishes in just a few clicks.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Craft It</h3>
+                    <p>Our chefs prepare your meal fresh to order using top-quality ingredients.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Enjoy hot, delicious food delivered straight to your door or ready for instant pickup.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cantina 76. Created by Avery Arnold.</p>
+    </footer>
+
+</body>
+</html>

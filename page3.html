@@ -1,0 +1,429 @@
+<!-- 
+  Author: Tony Le
+  Date: November 8, 2026
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina 76 | About Us & Contact</title>
+
+    <style>
+        :root {
+            --primary: #c8421c;
+            --primary-dark: #a23112;
+            --secondary: #d97736;
+            --accent: #2c5e43;
+            --accent-light: #438a63;
+            --bg-light: #faf7f2;
+            --surface: #ffffff;
+            --text-dark: #222222;
+            --text-muted: #5f5f5f;
+            --border: #e6dfd5;
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header.site-nav {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(200, 66, 28, 0.94), rgba(44, 94, 67, 0.9)),
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .page-banner h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-banner p {
+            font-size: 1.2rem;
+            color: #f3f3f3;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: var(--surface);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        img.featured-img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .team-member {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-left: 5px solid var(--primary);
+        }
+
+        .team-member h3 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+        }
+
+        form {
+            margin-top: 1.5rem;
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            color: var(--text-dark);
+        }
+
+        .faq-item {
+            margin-bottom: 1.25rem;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .faq-item p:first-child {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        footer {
+            background-color: var(--surface);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Unified Header Navigation -->
+    <header class="site-nav">
+        <nav>
+            <a href="index.html" class="brand-logo">Cantina 76</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html">Menu</a></li>
+                <li><a href="page3.html">About & Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Title Banner -->
+    <div class="page-banner">
+        <h1>About Us & Contact</h1>
+        <p>Creative Tacos • Hand-Crafted Margaritas • Great Company</p>
+    </div>
+
+    <!-- Main Container -->
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <img class="featured-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Cantina 76 dining room and bar patio atmosphere">
+            <p>
+                Cantina 76 is an independently owned and operated Mexican-inspired
+                restaurant and bar with locations in Columbia, Charleston, Kiawah,
+                and Greenville, South Carolina.
+            </p>
+            <p>
+                We specialize in creative tacos, hand-crafted margaritas, and an
+                upbeat atmosphere that makes every visit enjoyable. Whether you are
+                a University of South Carolina student, a local family, a working
+                professional, or a visitor exploring Columbia, Cantina 76 offers a
+                welcoming dining experience for everyone.
+            </p>
+            <p>
+                With approximately 100 employees across our locations, we are proud
+                to be a growing mid-sized business that values great food,
+                excellent service, and community connections. We are also
+                pet-friendly, so feel free to bring your furry family members along!
+            </p>
+        </section>
+
+        <section id="origin">
+            <h2>The Origin Story</h2>
+            <p>
+                Cantina 76 began with a simple idea: create a place where people
+                could enjoy bold Mexican-inspired flavors in a fun and welcoming
+                environment. Three friends who shared a passion for food and
+                hospitality noticed that many restaurants focused on either great
+                food or great atmosphere, but rarely both.
+            </p>
+            <p>
+                Inspired by family recipes, local culture, and the vibrant energy
+                of Columbia, they launched Cantina 76. Their goal was to bring
+                together students, families, professionals, and visitors for fresh
+                tacos, handcrafted margaritas, and unforgettable experiences.
+                Today, that vision continues at every Cantina 76 location.
+            </p>
+        </section>
+
+        <section id="team">
+            <h2>Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Avery Arnold</h3>
+                    <p><strong>Marketing Manager</strong></p>
+                    <p>Manages social media campaigns, community outreach, and brand awareness across South Carolina.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Tony Le</h3>
+                    <p><strong>Logistics Manager</strong></p>
+                    <p>Oversees inventory, supplier coordination, and operations to ensure every location runs smoothly.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Erin Conlon</h3>
+                    <p><strong>IT Support Specialist</strong></p>
+                    <p>Maintains systems, digital ordering platforms, and technical hosting across the organization.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> info@cantina76sc.com</p>
+                <p><strong>Phone:</strong> (803) 555-7676</p>
+                <p><strong>Address:</strong> 123 Taco Lane, Columbia, SC 29208</p>
+                <p><strong>Instagram:</strong> @Cantina76SC</p>
+                <p><strong>Facebook:</strong> facebook.com/Cantina76SC</p>
+                <p><strong>X (Twitter):</strong> @Cantina76SC</p>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; color: var(--accent);">Send Us a Message</h3>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Hours of Operation</h2>
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Hours</th>
+                </tr>
+                <tr>
+                    <td>Monday - Thursday</td>
+                    <td>11:00 AM - 10:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>11:00 AM - 11:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>10:00 AM - 11:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>10:00 AM - 9:00 PM</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <p>What is your most popular menu item?</p>
+                <p>Our creative tacos and handcrafted margaritas are customer favorites.</p>
+            </div>
+            <div class="faq-item">
+                <p>Are pets allowed?</p>
+                <p>Yes! Cantina 76 is pet-friendly and welcomes pets in outdoor seating areas.</p>
+            </div>
+            <div class="faq-item">
+                <p>Do you offer takeout?</p>
+                <p>Absolutely. Customers can order takeout by phone or online.</p>
+            </div>
+            <div class="faq-item">
+                <p>Who visits Cantina 76?</p>
+                <p>We serve University of South Carolina students, Columbia residents, families, professionals, and visitors from all over.</p>
+            </div>
+            <div class="faq-item">
+                <p>Do you cater events?</p>
+                <p>Yes! We offer catering services for parties, business meetings, and special events.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cantina 76 | Created by Tony Le</p>
+    </footer>
+
+</body>
+</html>
